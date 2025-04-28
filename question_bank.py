@@ -18,7 +18,7 @@ hints = {
         # Pair each question with a corresponding hint.
     ],
     # Repeat for other categories as needed.
-} #Hello
+} #Hello!
 
 #---------------------------------------
 
