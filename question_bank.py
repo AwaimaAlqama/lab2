@@ -2,7 +2,7 @@
 #  Question Bank
 #    Student B
 #---------------------------------------
-
+#Hello
 import random
 
 # Simplified example with one category. Expand as needed.
@@ -14,13 +14,38 @@ questions = {
         # Add more questions as tuples (question, answer)
     ], 
     "History": [("What year did world war II end?","1945"),
-                ("Which wall came down in 1989?","Berlin Wall"),]
+                ("Which wall came down in 1989?","Berlin Wall"),
+                ("Who was the first president of the United States?","George Washington"),
+    ],
+    "Geography": [("What is the captial of Canada?","Ottawa"),
+                  ("Which continent is the Sahara Desert in?","Africa"),
+                  ("Which is the largest ocean in the world?","Pacific Ocean"),
+    ],
+    "Pop Culture": [("Who played Iron Man in Marvel movies?","Robert Downey Jr."),
+                    ("Which series features a character named Eleven?","Stranger Things"),
+                    ("What movie features the song 'Let It Go'?","Frozen"),
+    ]
 }
 
 hints = {
-    "Science": [
+    "Science": ["It contains Hydrogen and Oxygen.",
+                "A little more than 200."
+                "It is the fourth planet from the Sun.",
+                ],
+    "History" : ["It ended after the surrender of Germany and Japan."
+                 "It divided East and West Germany."
+                 "He appears on the US one-dollar bill.",
+                ],
+    "Geography" : ["Not Toronto.",
+                   "It starts with the letter A.",
+                   "It's named after peace.",
+                ],
+    "Pop Culture" : ["His initials are RDJ.",
+                     "The title has two words and involves strange events.",
+                     "It's a Disney movie featuring Elsa.",
+                ]
         # Pair each question with a corresponding hint.
-    ],
+    
     # Repeat for other categories as needed.
 } 
 
@@ -39,6 +64,11 @@ def select_random_question(category):
     #------------------------
     # Add your code here
     #------------------------
+    if category in questions and questions[category]:
+        return random.choice(questions[category])
+    else:
+        print("No questions avaliable in this category.")
+        return None, None
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -58,6 +88,7 @@ def check_answer(player_answer, correct_answer):
     #------------------------
     # Add your code here
     #------------------------
+    return player_answer.strip().lower() == correct_answer.strip().lower()
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -77,6 +108,10 @@ def remove_question(category, question):
     #------------------------
     # Add your code here
     #------------------------
+    for q in questions[category]:
+        if q[0] == question:
+            questions[category].remove(q)
+            break
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -95,6 +130,8 @@ def display_question_and_accept_answer(question):
     #------------------------
     # Add your code here
     #------------------------
+    print(f"Question: {question}")
+    return input("Your Answer: ")
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -114,6 +151,17 @@ def provide_hint(category, question):
     #------------------------
     # Add your code here
     #------------------------
+    idx = None
+    if category in questions:
+        for i, q in enumerate(questions[category]):
+            if q[0] == question:
+                idx = i
+                break
+    if idx is not None and idx < len(hints[category]):
+        return hints[category][idx]
+    else:
+        return "No hint avaliable."
+
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -132,11 +180,10 @@ def display_correct_answer(correct_answer):
     #------------------------
     # Add your code here
     #------------------------
+    print(f"The correct answer was: {correct_answer}")
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
-
-
 
 
