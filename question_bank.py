@@ -9,8 +9,12 @@ import random
 questions = {
     "Science": [
         ("What is the chemical symbol for water?", "H2O"),
+        ("How many bones are there in the adult human body?","206"),
+        ("Which planet is known as the 'Red Planet'?","Mars"),
         # Add more questions as tuples (question, answer)
-    ],
+    ], 
+    "History": [("What year did world war II end?","1945"),
+                ("Which wall came down in 1989?","Berlin Wall"),]
 }
 
 hints = {
